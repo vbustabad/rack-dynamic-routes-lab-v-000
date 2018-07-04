@@ -10,8 +10,9 @@ class Application
       resp.write "Route not found"
       resp.status = 404
     elsif req.path.match(/items/)
-      item_name = req.params["item"]
-
+      item_name = req.path.split("/items/").last
+      item = @@items.detect do {|item| item.name == item_name}
+  
       if @@items.include?(item_name)
         item.price
       else
