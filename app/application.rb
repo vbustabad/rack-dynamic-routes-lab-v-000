@@ -14,6 +14,7 @@ class Application
       item = @@items.detect {|item| item.name == item_name}
 
       resp.write item.price
+      resp.status = 200
     else
       resp.write "Item not found"
       resp.status = 400
